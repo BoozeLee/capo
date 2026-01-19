@@ -85,7 +85,9 @@ export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExi
         <Text color="green">
           ✅ {selectedTech[selectedTech.length - 1]} ha accettato. Benvenuto nella famiglia.
         </Text>
+        <Text dimColor>   ({selectedTech[selectedTech.length - 1]} accepted. Welcome to the family.)</Text>
         <Text dimColor>La famiglia diventa più forte... Bravo!</Text>
+        <Text dimColor>   (The family grows stronger... Well done!)</Text>
       </Box>
     );
   }
@@ -97,6 +99,7 @@ export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExi
           <Spinner type="dots" />
         </Text>
         <Text> Facciamo un'offerta che non può rifiutare...</Text>
+        <Text dimColor> (Making an offer they can't refuse...)</Text>
       </Box>
     );
   }
@@ -107,11 +110,15 @@ export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExi
         <Text bold color="yellow">
           🤝 RECLUTAMENTO - Seleziona un soldato per il tuo crew
         </Text>
+        <Text dimColor>   (RECRUITMENT - Select a soldier for your crew)</Text>
       </Box>
 
       <Box marginBottom={1}>
         <Text dimColor>
           "Un amico dovrebbe sempre sottovalutare le tue virtù e un nemico sopravvalutare i tuoi difetti."
+        </Text>
+        <Text dimColor italic>
+          (A friend should always underestimate your virtues and an enemy overestimate your faults.)
         </Text>
       </Box>
 
@@ -119,6 +126,7 @@ export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExi
 
       <Box marginTop={1}>
         <Text dimColor>Usa le frecce ↑↓ per selezionare, Enter per reclutare. Capisce?</Text>
+        <Text dimColor>(Use ↑↓ arrows to select, Enter to recruit. Understand?)</Text>
       </Box>
     </Box>
   );
