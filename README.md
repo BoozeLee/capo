@@ -1,61 +1,69 @@
-# 🎩 CAPO - The Don of Dev Stacks
+# 🎩 CAPO - Il Don degli Stack di Sviluppo
 
-> *"In this family, we don't write configs... we make offers they can't refuse."*
+> *"In questa famiglia, non scriviamo configurazioni... facciamo offerte che non si possono rifiutare."*
 
-**CAPO** is a mafia-themed TUI (Text User Interface) for composing and managing your development stack configurations. Like a real Capo in the family, it orchestrates your tech crew without saying a word - silent, powerful, and gets the job done.
+**CAPO** è un TUI (Text User Interface) a tema mafia per comporre e gestire le configurazioni del tuo stack di sviluppo. Come un vero Capo nella famiglia, orchestra il tuo crew tecnologico senza dire una parola - silenzioso, potente, e porta a casa il lavoro.
 
-## 🔫 The Family Philosophy
+*Capisce? No stronzate, solo business.*
 
-Just like a Capo transforms the entire operation with a single word, CAPO transforms your entire dev stack with a single command. No questions asked. No witnesses.
+## 🔫 La Filosofia della Famiglia
 
-### What's a CAPO?
+Proprio come un Capo trasforma l'intera operazione con una singola parola, CAPO trasforma il tuo intero dev stack con un singolo comando. Niente domande. Niente testimoni.
 
-1. **In Music** 🎸 - A device that changes the key without changing the fingering
-2. **In The Family** 👔 - The silent operator who makes things happen
-3. **In Your Terminal** 💻 - The tool that composes your stack like a crime boss composes his crew
+### Che cos'è un CAPO?
 
-## 🎯 The Offer
+1. **Nella Musica** 🎸 - Un dispositivo che cambia la chiave senza cambiare le dita
+2. **Nella Famiglia** 👔 - L'operatore silenzioso che fa succedere le cose
+3. **Nel Tuo Terminale** 💻 - Lo strumento che compone il tuo stack come un boss del crimine compone il suo crew
 
-CAPO lets you:
-- **Recruit your crew** - Select technologies for your stack
-- **Run the operation** - Compose configs across frameworks, databases, UI libraries
-- **Go to the mattresses** - Deploy with confidence
-- **Clean up** - No loose ends, no config conflicts
+## 🎯 L'Offerta
 
-## 🔥 Modes of Operation
+CAPO ti permette di:
+- **Reclutare il tuo crew** - Scegli le tecnologie per il tuo stack
+- **Gestire l'operazione** - Componi configs attraverso frameworks, databases, UI libraries
+- **Andare ai materassi** - Deploy con fiducia
+- **Pulire tutto** - Nessun filo pendente, nessun conflitto. Capisce?
 
-### Standard Operations
-- `capo recruit` - Select your tech family members
-- `capo compose` - Put the family together
-- `capo status` - Check who's in the family
-- `capo whack` - Remove a tech from your stack
+## 🔥 Modalità di Operazione
 
-### 🔫 Special Modes
+### Operazioni Standard
+- `capo recruit` - Seleziona i membri della tua famiglia tech
+- `capo compose` - Metti insieme la famiglia
+- `capo famiglia` - Guarda chi è nella famiglia
+- `capo whack` - Rimuovi una tech dal tuo stack
+
+### 🔫 Modalità Speciali
 
 #### `--gotommyguns` Mode
-*"You know what you do? You go get your fuckin' shinebox."*
+*"Vai a prendere la tua fottuta cassetta degli attrezzi, stronzo."*
 
-When things go south and you need to handle business. This mode:
-- ⚡ Zero prompts, zero mercy
-- 🔥 Auto-resolves conflicts by priority
-- 💥 Forces composition even with warnings
-- 🎯 Backs up first, asks questions never
+Quando le cose vanno male e devi sistemare gli affari. Questa modalità:
+- ⚡ Zero domande, zero pietà
+- 🔥 Risolve i conflitti automaticamente per priorità
+- 💥 Forza la composizione anche con avvertimenti
+- 🎯 Backup prima, domande mai. Madonna!
+
+*Niente cazzate. Solo risultati.*
 
 #### `--omerta` Mode
-*The code of silence.*
-- 🤫 Minimal output
-- ⚫ Stealth operations
-- 📋 Logs everything but shows nothing
-- ✅ Success or death, no in-between
+*Il codice del silenzio. Zitto e mosca.*
+- 🤫 Output minimo
+- ⚫ Operazioni stealth
+- 📋 Registra tutto ma non mostra niente
+- ✅ Successo o morte, niente vie di mezzo
+
+*Chi parla troppo, dorme con i pesci.*
 
 #### `--sitdown` Mode
-*"We're gonna have a little sit-down."*
-- 🪑 Interactive negotiation mode
-- ⚖️ Resolve conflicts diplomatically
-- 🤝 Make deals between competing techs
-- 📊 Visual family tree of your stack
+*"Facciamo una piccola riunione. Sediamoci e parliamone."*
+- 🪑 Modalità di negoziazione interattiva
+- ⚖️ Risolvi i conflitti diplomaticamente
+- 🤝 Fai accordi tra tecnologie in competizione
+- 📊 Albero genealogico visuale del tuo stack
 
-## 🎨 The Family Aesthetic
+*Con rispetto, si trova sempre una soluzione.*
+
+## 🎨 L'Estetica della Famiglia
 
 ```
 ╔══════════════════════════════════════════════╗
@@ -67,143 +75,151 @@ When things go south and you need to handle business. This mode:
 ║    ╚██████╗██║  ██║██║     ╚██████╔╝        ║
 ║     ╚═════╝╚═╝  ╚═╝╚═╝      ╚═════╝         ║
 ║                                              ║
-║         The Don of Dev Stacks                ║
+║         Il Don degli Stack                   ║
 ║                                              ║
 ╚══════════════════════════════════════════════╝
 
-  "Leave the gun. Take the configs."
+  "Lascia la pistola. Prendi le configs."
 ```
 
-## 🏗️ Tech Family Structure
+## 🏗️ La Struttura della Famiglia Tech
 
 ```
-The Family Hierarchy:
+La Gerarchia della Famiglia:
 
-DON (You)
-├── CAPO (This Tool)
-│   ├── Soldiers (Configs)
-│   │   ├── Framework Crew (Next.js, React, etc.)
-│   │   ├── Database Outfit (Postgres, Drizzle, etc.)
-│   │   ├── UI Syndicate (shadcn, Tailwind, etc.)
-│   │   └── Tooling Associates (AI SDK, MCP, etc.)
-│   └── Enforcers (Validators & Conflict Resolvers)
-└── Territory (Your Projects)
+DON (Tu)
+├── CAPO (Questo Tool)
+│   ├── Soldati (Configs)
+│   │   ├── Crew Framework (Next.js, React, etc.)
+│   │   ├── Outfit Database (Postgres, Drizzle, etc.)
+│   │   ├── Sindacato UI (shadcn, Tailwind, etc.)
+│   │   └── Associati Tooling (AI SDK, MCP, etc.)
+│   └── Enforcer (Validatori & Risolutori di Conflitti)
+└── Territorio (I Tuoi Progetti)
 ```
 
-## 🚀 Getting Made
+## 🚀 Getting Made (Entrare nella Famiglia)
 
 ```bash
-# Clone the repo (invite-only)
-git clone git@github.com:your-username/capo.git
+# Clona la repo (solo su invito)
+git clone git@github.com:BoozeLee/capo.git
 
-# Join the family
+# Unisciti alla famiglia
 cd capo
 npm install
 
-# Take the oath
+# Presta il giuramento
 npm run dev
 
-# Start running operations
+# Inizia a gestire operazioni
 capo recruit --crew nextjs,shadcn,drizzle
 ```
 
-## 📜 The Code
+## 📜 Il Codice
 
-### Basic Hit
+### Basic Hit (Colpo Base)
 ```bash
-# Compose a stack (the civilized way)
+# Componi uno stack (alla maniera civilizzata)
 capo compose nextjs shadcn drizzle
 
-# When you need to send a message
+# Quando devi mandare un messaggio
 capo compose nextjs shadcn drizzle --gotommyguns
 
-# Keep it quiet
+# Tienilo tranquillo
 capo compose nextjs shadcn drizzle --omerta
 
-# Negotiate terms
+# Negozia i termini
 capo compose nextjs shadcn drizzle --sitdown
 ```
 
-### Family Management
+### Gestione della Famiglia
 ```bash
-# See who's in the family
+# Guarda chi è nella famiglia
 capo famiglia
 
-# Check someone's status
+# Controlla lo status di qualcuno
 capo status nextjs
 
-# Make someone disappear
+# Fai sparire qualcuno
 capo whack tailwind
 
-# Bring someone back in
+# Riporta qualcuno dentro
 capo recruit shadcn
 ```
 
-## 🎭 The Narrative System
+## 🎭 Il Sistema Narrativo
 
-Every action in CAPO has personality:
+Ogni azione in CAPO ha personalità:
 
-**Recruiting:**
+**Reclutamento:**
 ```
-🤝 Making nextjs an offer...
-✅ nextjs accepted. Welcome to the family.
-```
-
-**Conflicts:**
-```
-⚠️  We got a problem. nextjs-14 and nextjs-15 can't work together.
-   Someone's gotta go.
-
-   [1] Keep nextjs-15 (Recommended)
-   [2] Keep nextjs-14
-   [3] Get rid of both (Nuclear option)
+🤝 Facciamo un'offerta a nextjs...
+✅ nextjs ha accettato. Benvenuto nella famiglia.
 ```
 
-**Success:**
+**Conflitti:**
 ```
-🎩 The family is complete.
-   Your stack is ready. Now go make us proud.
+⚠️  Abbiamo un problema. nextjs-14 e nextjs-15 non possono lavorare insieme.
+   Qualcuno deve andarsene. Capisce?
+
+   [1] Tieni nextjs-15 (Consigliato)
+   [2] Tieni nextjs-14
+   [3] Elimina entrambi (Opzione nucleare - che cazzo!)
 ```
 
-**Gotommyguns Mode:**
+**Successo:**
 ```
-🔫 TAKING CARE OF BUSINESS...
+🎩 La famiglia è completa.
+   Il tuo stack è pronto. Ora vai e rendici orgogliosi.
+   Bravo, fai onore alla famiglia!
+```
+
+**Modalità Gotommyguns:**
+```
+🔫 SISTEMANDO GLI AFFARI...
    ███████████████████░░░ 75%
 
-💥 nextjs-14... whacked.
-💥 Conflicts... resolved.
-✅ Stack composed. No loose ends.
+💥 nextjs-14... eliminato. Stronzate finite.
+💥 Conflitti... risolti. Niente cazzate.
+✅ Stack composto. Nessun filo pendente. Madonna!
 ```
 
-## 🎬 Coming Soon
+## 🎬 Prossimamente (Coming Soon)
 
-- **Consigliere Mode** - AI-powered stack advisor (GPT integration)
-- **Family Tree View** - Visual dependency graph
-- **Protection Money** - Automated backups and snapshots
-- **Territory Expansion** - Multi-project management
-- **The Commission** - Share configs with other families
-- **Witness Protection** - Config versioning and rollback
+- **Modalità Consigliere** - Consigliere intelligente per il tuo stack
+- **Vista Albero Genealogico** - Grafico visuale delle dipendenze
+- **Il Pizzo** - Backup automatici e snapshots (paghi, dormi tranquillo)
+- **Espansione Territorio** - Gestione multi-progetto
+- **La Commissione** - Condividi configs con altre famiglie
+- **Protezione Testimoni** - Versioning e rollback delle configs
 
-## 🤝 Joining The Family
+*Tutto a tempo debito. Con pazienza e rispetto.*
 
-This is a private operation. By invitation only.
+## 🤝 Unirsi alla Famiglia
 
-## ⚖️ The Rules
+Questa è un'operazione privata. Solo su invito. Se sei qui, sei già dentro.
 
-1. **Respect the family** - Don't break the configs
-2. **No rats** - Keep your secrets in `.env`
-3. **Business is business** - Conflicts get resolved, period
-4. **Leave the gun, take the configs** - Always backup
+## ⚖️ Le Regole della Famiglia
 
-## 📝 License
+1. **Rispetta la famiglia** - Non rompere le configs, stronzo
+2. **Niente infami** - Tieni i tuoi segreti nel `.env`, capisce?
+3. **Gli affari sono affari** - I conflitti si risolvono, punto
+4. **Lascia la pistola, prendi le configs** - Sempre backup. Sempre.
+5. **Omertà** - Quello che succede nella famiglia, resta nella famiglia
 
-MIT - Because even crime families respect intellectual property.
+## 📝 Licenza
+
+MIT - Perché anche le famiglie criminali rispettano la proprietà intellettuale.
 
 ---
 
-*"A man who doesn't spend time with his configs can never be a real man."*
-— Don Vito Corleone (probably)
+*"Un uomo che non passa tempo con le sue configs non può mai essere un vero uomo."*
+— Don Vito Corleone (probabilmente)
 
-**Built with respect. Composed with honor. Deployed with precision.**
+**Costruito con rispetto. Composto con onore. Deployato con precisione.**
 
-🎩 *Forget about it.*
+🎩 *Scordatelo. Forget about it.*
+
+*E adesso, basta con le stronzate. Andiamo a lavorare!*
+
+*Capisce? Tachinì, tutti quanti. La famiglia sopra tutto.*

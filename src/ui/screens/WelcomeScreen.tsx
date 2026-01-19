@@ -23,31 +23,31 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onExit }) => {
       </Gradient>
 
       <Box marginTop={1} marginBottom={1} borderStyle="round" borderColor="gray" padding={1}>
-        <Text bold>The Don of Dev Stacks</Text>
+        <Text bold>Il Don degli Stack di Sviluppo</Text>
       </Box>
 
       <Box flexDirection="column" marginTop={1}>
-        <Text dimColor>"In this family, we don't write configs...</Text>
-        <Text dimColor> we make offers they can't refuse."</Text>
+        <Text dimColor>"In questa famiglia, non scriviamo configurazioni...</Text>
+        <Text dimColor> facciamo offerte che non si possono rifiutare."</Text>
       </Box>
 
       <Box flexDirection="column" marginTop={2}>
-        <Text color="yellow">Available Commands:</Text>
-        <Text>  🤝 <Text bold>capo recruit</Text> - Select your tech family</Text>
-        <Text>  🎩 <Text bold>capo compose</Text> - Put the family together</Text>
-        <Text>  👔 <Text bold>capo famiglia</Text> - See who's in the family</Text>
-        <Text>  💥 <Text bold>capo whack</Text> - Remove a tech from your stack</Text>
+        <Text color="yellow">Comandi Disponibili:</Text>
+        <Text>  🤝 <Text bold>capo recruit</Text> - Recluta la tua famiglia tech</Text>
+        <Text>  🎩 <Text bold>capo compose</Text> - Metti insieme la famiglia</Text>
+        <Text>  👔 <Text bold>capo famiglia</Text> - Guarda chi è nella famiglia</Text>
+        <Text>  💥 <Text bold>capo whack</Text> - Elimina una tech dal tuo stack</Text>
       </Box>
 
       <Box flexDirection="column" marginTop={2}>
-        <Text color="red">Special Modes:</Text>
-        <Text>  🔫 <Text bold>--gotommyguns</Text> - Zero prompts, zero mercy</Text>
-        <Text>  🤫 <Text bold>--omerta</Text> - Silent operations</Text>
-        <Text>  🪑 <Text bold>--sitdown</Text> - Interactive negotiation</Text>
+        <Text color="red">Modalità Speciali:</Text>
+        <Text>  🔫 <Text bold>--gotommyguns</Text> - Zero domande, zero pietà</Text>
+        <Text>  🤫 <Text bold>--omerta</Text> - Operazioni silenziose</Text>
+        <Text>  🪑 <Text bold>--sitdown</Text> - Negoziazione interattiva</Text>
       </Box>
 
       <Box marginTop={2}>
-        <Text dimColor italic>Leave the gun. Take the configs.</Text>
+        <Text dimColor italic>Lascia la pistola. Prendi le configs. Capisce?</Text>
       </Box>
     </Box>
   );

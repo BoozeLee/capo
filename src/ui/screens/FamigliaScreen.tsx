@@ -32,12 +32,12 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
     <Box flexDirection="column" padding={1}>
       <Box marginBottom={1}>
         <Text bold color="yellow">
-          👔 THE FAMIGLIA - Family Structure
+          👔 LA FAMIGLIA - Struttura della Famiglia
         </Text>
       </Box>
 
       <Box marginBottom={1}>
-        <Text dimColor>"A man who doesn't spend time with his family can never be a real man."</Text>
+        <Text dimColor>"Un uomo che non passa tempo con la sua famiglia non può mai essere un vero uomo."</Text>
       </Box>
 
       <Box flexDirection="column" marginTop={1} borderStyle="round" borderColor="yellow" padding={1}>
@@ -53,7 +53,7 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
 
       <Box flexDirection="column" marginTop={1}>
         <Text bold color="green">
-          ⚔️  SOLDIERS ({family.soldiers.length})
+          ⚔️  SOLDATI ({family.soldiers.length})
         </Text>
         {family.soldiers.map((soldier, i) => (
           <Box key={i} marginLeft={2}>
@@ -67,7 +67,7 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
 
       <Box flexDirection="column" marginTop={1}>
         <Text bold color="cyan">
-          🤝 ASSOCIATES ({family.associates.length})
+          🤝 ASSOCIATI ({family.associates.length})
         </Text>
         {family.associates.map((associate, i) => (
           <Box key={i} marginLeft={2}>
@@ -80,7 +80,7 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
       </Box>
 
       <Box marginTop={2}>
-        <Text dimColor italic>The family is strong. Respect the structure.</Text>
+        <Text dimColor italic>La famiglia è forte. Rispetta la struttura. Capisce?</Text>
       </Box>
     </Box>
   );

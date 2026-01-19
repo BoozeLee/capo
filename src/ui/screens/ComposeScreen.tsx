@@ -39,15 +39,15 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
     if (flags.gotommyguns) {
       switch (phase) {
         case 'initializing':
-          return '🔫 LOADING THE CLIP...';
+          return '🔫 CARICANDO LA PISTOLA...';
         case 'parsing':
-          return '🔫 IDENTIFYING TARGETS...';
+          return '🔫 IDENTIFICANDO I BERSAGLI...';
         case 'resolving':
-          return '💥 HANDLING CONFLICTS...';
+          return '💥 SISTEMANDO I CONFLITTI... STRONZATE FINITE!';
         case 'composing':
-          return '💥 CLEANING UP...';
+          return '💥 PULENDO... NIENTE CAZZATE!';
         case 'done':
-          return '✅ BUSINESS HANDLED. NO LOOSE ENDS.';
+          return '✅ AFFARI SISTEMATI. NESSUN FILO PENDENTE. MADONNA!';
       }
     }
 
@@ -57,15 +57,15 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
 
     switch (phase) {
       case 'initializing':
-        return '🎩 Gathering the family...';
+        return '🎩 Riunendo la famiglia...';
       case 'parsing':
-        return '📋 Reading the manifesto...';
+        return '📋 Leggendo il manifesto...';
       case 'resolving':
-        return '⚖️  Settling disputes...';
+        return '⚖️  Risolvendo le dispute...';
       case 'composing':
-        return '🤝 Making the deal...';
+        return '🤝 Facendo l\'accordo...';
       case 'done':
-        return '✅ The family is complete. Now go make us proud.';
+        return '✅ La famiglia è completa. Ora vai e rendici orgogliosi. Bravo!';
     }
   };
 
@@ -80,9 +80,10 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
   if (args.length === 0) {
     return (
       <Box flexDirection="column" padding={1}>
-        <Text color="red">❌ No crew specified.</Text>
-        <Text dimColor>Usage: capo compose &lt;tech1&gt; &lt;tech2&gt; ...</Text>
-        <Text dimColor>Example: capo compose nextjs-15 shadcn drizzle</Text>
+        <Text color="red">❌ Nessun crew specificato, stronzo.</Text>
+        <Text dimColor>Uso: capo compose &lt;tech1&gt; &lt;tech2&gt; ...</Text>
+        <Text dimColor>Esempio: capo compose nextjs-15 shadcn drizzle</Text>
+        <Text dimColor italic>Capisce?</Text>
       </Box>
     );
   }
@@ -92,7 +93,7 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
       {!flags.omerta && (
         <Box marginBottom={1}>
           <Text bold color={flags.gotommyguns ? 'red' : 'yellow'}>
-            {flags.gotommyguns ? '🔫 GOTOMMYGUNS MODE' : '🎩 COMPOSING FAMILY'}
+            {flags.gotommyguns ? '🔫 MODALITÀ GOTOMMYGUNS' : '🎩 COMPOSIZIONE FAMIGLIA'}
           </Text>
         </Box>
       )}
@@ -120,14 +121,14 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
 
       {phase === 'done' && !flags.omerta && (
         <Box marginTop={1}>
-          <Text dimColor italic>"Leave the gun. Take the configs."</Text>
+          <Text dimColor italic>"Lascia la pistola. Prendi le configs. Capisce?"</Text>
         </Box>
       )}
 
       {flags.gotommyguns && phase === 'resolving' && (
         <Box marginTop={1} flexDirection="column">
-          <Text color="red">💥 nextjs-14... whacked.</Text>
-          <Text color="red">💥 Conflicts... resolved.</Text>
+          <Text color="red">💥 nextjs-14... eliminato. Stronzate finite.</Text>
+          <Text color="red">💥 Conflitti... risolti. Niente cazzate.</Text>
         </Box>
       )}
     </Box>
