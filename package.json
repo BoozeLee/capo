@@ -1,0 +1,57 @@
+{
+  "name": "capo",
+  "version": "0.1.0",
+  "description": "The Don of Dev Stacks - A mafia-themed TUI for composing your tech family",
+  "private": true,
+  "main": "dist/index.js",
+  "bin": {
+    "capo": "./dist/cli.js"
+  },
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "build": "tsc && chmod +x dist/cli.js",
+    "start": "node dist/cli.js",
+    "test": "vitest run",
+    "lint": "biome lint .",
+    "format": "biome format --write ."
+  },
+  "keywords": [
+    "tui",
+    "cli",
+    "dev-stack",
+    "configuration",
+    "mafia-theme",
+    "terminal-ui"
+  ],
+  "author": "The Family",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "ink": "^5.0.1",
+    "ink-gradient": "^3.0.0",
+    "ink-big-text": "^2.0.0",
+    "ink-spinner": "^5.0.0",
+    "ink-text-input": "^6.0.0",
+    "ink-select-input": "^6.0.0",
+    "react": "^18.3.1",
+    "meow": "^13.0.0",
+    "chalk": "^5.3.0",
+    "gradient-string": "^3.0.0",
+    "figlet": "^1.7.0",
+    "boxen": "^8.0.1",
+    "yaml": "^2.3.4",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@types/figlet": "^1.5.8",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.3.5",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.2",
+    "vitest": "^1.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
