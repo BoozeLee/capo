@@ -39,15 +39,15 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
     if (flags.gotommyguns) {
       switch (phase) {
         case 'initializing':
-          return '🔫 CARICANDO LA PISTOLA... (LOADING THE CLIP...)';
+          return '🔫 LOADING THE CLIP... Andiamo!';
         case 'parsing':
-          return '🔫 IDENTIFICANDO I BERSAGLI... (IDENTIFYING TARGETS...)';
+          return '🔫 IDENTIFYING TARGETS... Zero stronzate.';
         case 'resolving':
-          return '💥 SISTEMANDO I CONFLITTI... STRONZATE FINITE! (HANDLING CONFLICTS... BULLSHIT OVER!)';
+          return '💥 HANDLING CONFLICTS... Niente cazzate!';
         case 'composing':
-          return '💥 PULENDO... NIENTE CAZZATE! (CLEANING UP... NO SHIT!)';
+          return '💥 CLEANING UP... Madonna, quasi finito!';
         case 'done':
-          return '✅ AFFARI SISTEMATI. NESSUN FILO PENDENTE. MADONNA! (BUSINESS HANDLED. NO LOOSE ENDS.)';
+          return '✅ BUSINESS HANDLED. No loose ends. Capisce?';
       }
     }
 
@@ -57,15 +57,15 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
 
     switch (phase) {
       case 'initializing':
-        return '🎩 Riunendo la famiglia... (Gathering the family...)';
+        return '🎩 Gathering the famiglia...';
       case 'parsing':
-        return '📋 Leggendo il manifesto... (Reading the manifesto...)';
+        return '📋 Reading the manifesto...';
       case 'resolving':
-        return '⚖️  Risolvendo le dispute... (Settling disputes...)';
+        return '⚖️  Settling disputes con rispetto...';
       case 'composing':
-        return '🤝 Facendo l\'accordo... (Making the deal...)';
+        return '🤝 Making the deal...';
       case 'done':
-        return '✅ La famiglia è completa. Ora vai e rendici orgogliosi. Bravo!\n   (The family is complete. Now go make us proud. Well done!)';
+        return '✅ La famiglia is complete. Now go make us proud!';
     }
   };
 
@@ -80,12 +80,10 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
   if (args.length === 0) {
     return (
       <Box flexDirection="column" padding={1}>
-        <Text color="red">❌ Nessun crew specificato, stronzo.</Text>
-        <Text dimColor>   (No crew specified, asshole.)</Text>
-        <Text dimColor>Uso: capo compose &lt;tech1&gt; &lt;tech2&gt; ...</Text>
-        <Text dimColor>(Usage: capo compose &lt;tech1&gt; &lt;tech2&gt; ...)</Text>
-        <Text dimColor>Esempio: capo compose nextjs-15 shadcn drizzle</Text>
-        <Text dimColor italic>Capisce? (Understand?)</Text>
+        <Text color="red">❌ No crew specified, stronzo.</Text>
+        <Text dimColor>Usage: capo compose &lt;tech1&gt; &lt;tech2&gt; ...</Text>
+        <Text dimColor>Example: capo compose nextjs-15 shadcn drizzle</Text>
+        <Text dimColor italic>Capisce?</Text>
       </Box>
     );
   }
@@ -95,10 +93,7 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
       {!flags.omerta && (
         <Box marginBottom={1}>
           <Text bold color={flags.gotommyguns ? 'red' : 'yellow'}>
-            {flags.gotommyguns ? '🔫 MODALITÀ GOTOMMYGUNS' : '🎩 COMPOSIZIONE FAMIGLIA'}
-          </Text>
-          <Text dimColor>
-            {flags.gotommyguns ? '   (GOTOMMYGUNS MODE)' : '   (COMPOSING FAMILY)'}
+            {flags.gotommyguns ? '🔫 GOTOMMYGUNS MODE' : '🎩 COMPOSING FAMIGLIA'}
           </Text>
         </Box>
       )}
@@ -125,18 +120,15 @@ export const ComposeScreen: React.FC<ComposeScreenProps> = ({ args, flags, onExi
       )}
 
       {phase === 'done' && !flags.omerta && (
-        <Box marginTop={1} flexDirection="column">
-          <Text dimColor italic>"Lascia la pistola. Prendi le configs. Capisce?"</Text>
-          <Text dimColor italic> (Leave the gun. Take the configs. Understand?)</Text>
+        <Box marginTop={1}>
+          <Text dimColor italic>Leave the gun. Take the configs. Capisce?</Text>
         </Box>
       )}
 
       {flags.gotommyguns && phase === 'resolving' && (
         <Box marginTop={1} flexDirection="column">
-          <Text color="red">💥 nextjs-14... eliminato. Stronzate finite.</Text>
-          <Text dimColor>   (nextjs-14... whacked. Bullshit over.)</Text>
-          <Text color="red">💥 Conflitti... risolti. Niente cazzate.</Text>
-          <Text dimColor>   (Conflicts... resolved. No shit.)</Text>
+          <Text color="red">💥 nextjs-14... whacked. Stronzate finite.</Text>
+          <Text color="red">💥 Conflicts... resolved. Niente cazzate.</Text>
         </Box>
       )}
     </Box>

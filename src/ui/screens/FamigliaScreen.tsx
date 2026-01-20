@@ -32,14 +32,13 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
     <Box flexDirection="column" padding={1}>
       <Box marginBottom={1}>
         <Text bold color="yellow">
-          👔 LA FAMIGLIA - Struttura della Famiglia
+          👔 LA FAMIGLIA - Family Structure
         </Text>
-        <Text dimColor>   (THE FAMILY - Family Structure)</Text>
       </Box>
 
       <Box marginBottom={1}>
-        <Text dimColor>"Un uomo che non passa tempo con la sua famiglia non può mai essere un vero uomo."</Text>
-        <Text dimColor italic>(A man who doesn't spend time with his family can never be a real man.)</Text>
+        <Text dimColor>"A man who doesn't spend time with his famiglia</Text>
+        <Text dimColor> can never be a real man."</Text>
       </Box>
 
       <Box flexDirection="column" marginTop={1} borderStyle="round" borderColor="yellow" padding={1}>
@@ -55,9 +54,8 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
 
       <Box flexDirection="column" marginTop={1}>
         <Text bold color="green">
-          ⚔️  SOLDATI ({family.soldiers.length})
+          ⚔️  SOLDATI - Soldiers ({family.soldiers.length})
         </Text>
-        <Text dimColor>   (SOLDIERS)</Text>
         {family.soldiers.map((soldier, i) => (
           <Box key={i} marginLeft={2}>
             <Text>
@@ -70,9 +68,8 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
 
       <Box flexDirection="column" marginTop={1}>
         <Text bold color="cyan">
-          🤝 ASSOCIATI ({family.associates.length})
+          🤝 ASSOCIATI - Associates ({family.associates.length})
         </Text>
-        <Text dimColor>   (ASSOCIATES)</Text>
         {family.associates.map((associate, i) => (
           <Box key={i} marginLeft={2}>
             <Text>
@@ -84,8 +81,7 @@ export const FamigliaScreen: React.FC<FamigliaScreenProps> = ({ onExit }) => {
       </Box>
 
       <Box marginTop={2}>
-        <Text dimColor italic>La famiglia è forte. Rispetta la struttura. Capisce?</Text>
-        <Text dimColor italic>(The family is strong. Respect the structure. Understand?)</Text>
+        <Text dimColor italic>La famiglia is strong. Respect the structure. Capisce?</Text>
       </Box>
     </Box>
   );
