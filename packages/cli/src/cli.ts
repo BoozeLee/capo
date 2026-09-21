@@ -3,6 +3,8 @@
 import { render } from "ink";
 import meow from "meow";
 import React from "react";
+import { runComposeCommand } from "./commands/compose.js";
+import { runPlanCommand } from "./commands/plan.js";
 import { App } from "./ui/App.js";
 
 const cli = meow(
@@ -56,14 +58,50 @@ const cli = meow(
         type: "string",
         shortFlag: "c",
       },
+      name: {
+        type: "string",
+        shortFlag: "n",
+      },
+      json: {
+        type: "boolean",
+        default: false,
+      },
+      dryRun: {
+        type: "boolean",
+        default: false,
+      },
+      fromPlan: {
+        type: "string",
+      },
     },
   },
 );
 
+const command = cli.input[0] || "welcome";
+
+if (command === "plan") {
+  process.exit(
+    runPlanCommand({ crew: cli.flags.crew, name: cli.flags.name, json: cli.flags.json }),
+  );
+}
+
+if (command === "compose") {
+  const exitCode = await runComposeCommand({
+    crew: cli.flags.crew,
+    name: cli.flags.name,
+    fromPlan: cli.flags.fromPlan,
+    gotommyguns: cli.flags.gotommyguns,
+    omerta: cli.flags.omerta,
+    json: cli.flags.json,
+    dryRun: cli.flags.dryRun,
+  });
+  process.exit(exitCode);
+}
+
 // Render the TUI
 render(
   React.createElement(App, {
-    command: cli.input[0] || "welcome",
+    command,
     args: cli.input.slice(1),
     flags: cli.flags,
   }),

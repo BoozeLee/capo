@@ -30,3 +30,5 @@ export type { ThemeMode } from "./theme/lines.js";
 export { phaseLine } from "./theme/lines.js";
 export type { PackageJsonLike, TechStatus } from "./status/compare.js";
 export { compareInstalled } from "./status/compare.js";
+export { ScaffoldPlanSchema } from "./types/plan-schema.js";
+export { parseCrew } from "./resolver/parse-crew.js";
