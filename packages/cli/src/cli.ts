@@ -6,6 +6,7 @@ import React from "react";
 import { runComposeCommand } from "./commands/compose.js";
 import { isFamilyCommand, runFamilyCommand } from "./commands/family/index.js";
 import { runPlanCommand } from "./commands/plan.js";
+import { runStatusCommand } from "./commands/status.js";
 import { App } from "./ui/App.js";
 
 const cli = meow(
@@ -19,7 +20,7 @@ const cli = meow(
 	  recruit       Select your tech family members
 	  compose       Put the family together
 	  famiglia      See who's in the family
-	  status        Check a tech's status
+	  status        Compare installed packages against capo.yaml (status [tech] [--json])
 	  whack         Remove a tech from your stack
 
 	The Family (Capo for Claude Code — state in .capo/)
@@ -109,6 +110,10 @@ if (command === "plan") {
   process.exit(
     runPlanCommand({ crew: cli.flags.crew, name: cli.flags.name, json: cli.flags.json }),
   );
+}
+
+if (command === "status") {
+  process.exit(runStatusCommand({ cwd: process.cwd(), tech: cli.input[1], json: cli.flags.json }));
 }
 
 if (command === "compose") {
