@@ -30,3 +30,7 @@ export { bindings, globsIntersect } from "./books/bind.js";
 export { appendRuling, markOverturned } from "./books/edit.js";
 export { appeals } from "./books/appeal.js";
 export type { Appeal } from "./books/appeal.js";
+export { checkScope } from "./scope/check.js";
+export type { ScopeReport } from "./scope/check.js";
+export { runAccept } from "./accept/run.js";
+export type { AcceptOptions, AcceptResult } from "./accept/run.js";
