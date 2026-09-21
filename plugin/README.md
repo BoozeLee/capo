@@ -4,10 +4,10 @@ Plan-first, contract-bound, ledger-backed coding under family rules.
 
 ## Install (project-local, no marketplace)
 
-    git clone <this> ~/.claude/plugins/capo     # or copy the folder
-    # or drop the skills straight in:
-    cp -r skills/*   ~/.claude/skills/
-    cp -r agents/*   ~/.claude/agents/
+    ./plugin/install.sh        # symlinks skills+agents into ~/.claude, links `capo` into ~/.local/bin
+
+Or by hand: copy `skills/*` to `~/.claude/skills/`, `agents/*` to `~/.claude/agents/`, and put
+`capo` (packages/cli/dist/cli.js) on PATH. The skills call `capo board|hit|books|context`.
 
 As a plugin, commands are namespaced: `/capo:sitdown`, `/capo:hit`, `/capo:books`.
 Dropped into `~/.claude/skills/`, they are `/sitdown`, `/hit`, `/loyalty-check`, `/books`.

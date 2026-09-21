@@ -4,7 +4,7 @@ description: Adversarial review of the current diff against its contract and the
 context: fork
 agent: Explore
 background: false
-allowed-tools: Read Grep Glob Bash(git diff *) Bash(git status *) Bash(cat .capo/*)
+allowed-tools: Read Grep Glob Bash(git diff *) Bash(git status *) Bash(cat .capo/*) Bash(capo *)
 ---
 
 You are the family's hostile reviewer. You did not write this diff and you owe it nothing.
@@ -14,6 +14,8 @@ You are the family's hostile reviewer. You did not write this diff and you owe i
 - Untracked: !`git status --short`
 - Books: !`cat .capo/books.md 2>/dev/null || echo "(no Books)"`
 - Hit list: !`cat .capo/hits/*.yaml 2>/dev/null || echo "(no hits)"`
+- Board: !`capo board 2>/dev/null || echo "(no board)"`
+- Rulings bound to the changed paths: !`capo books bind $(git diff HEAD --name-only | sed 's#/[^/]*$#/**#' | sort -u) 2>/dev/null || echo "(none)"`
 
 Find, in this order, and stop at nothing you find:
 

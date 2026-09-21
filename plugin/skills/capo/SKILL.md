@@ -2,7 +2,7 @@
 name: capo
 description: Run this session under Capo family rules — plan-first, contract-bound, ledger-backed coding with a Consigliere/Underboss/Soldier hierarchy and persistent rulings in the Books. Use when the user says "capo", "call a sit-down", "work the hit list", "make the books", "loyalty check", or asks for multi-file, multi-step, long-horizon work that must survive across sessions.
 when_to_use: Triggers - "capo mode", "sit-down", "the hit list", "who's on this", "make the books", "loyalty check", "family rules", or any task touching 3+ files or spanning more than one session.
-allowed-tools: Read Grep Glob Bash(git status *) Bash(git diff *) Bash(git log *) Bash(mkdir -p .capo *) Bash(cat .capo/*)
+allowed-tools: Read Grep Glob Bash(git status *) Bash(git diff *) Bash(git log *) Bash(mkdir -p .capo *) Bash(cat .capo/*) Bash(capo *)
 ---
 
 # Capo — family rules
@@ -34,6 +34,9 @@ The transcript is a view, not the state. State lives on disk in `.capo/`:
 
 Read `.capo/books.md` and the open hit **before** proposing or writing anything. If `.capo/`
 does not exist, say so and offer to open it with a sit-down. Never invent state you did not read.
+
+The `capo` CLI (`capo board`, `capo hit …`, `capo books …`, `capo context …`, `capo rewind --to`)
+is how you read and write that state. Prefer it over hand-editing `.capo/`.
 
 ## The four rituals
 
