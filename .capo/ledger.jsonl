@@ -1,0 +1,1 @@
+{"seq":1,"ts":"2026-09-21T21:10:31.644Z","actor":"capo","kind":"sitdown_open","hit":"status-command","parent":null,"payload":{"nodes":3,"risk":"h2: the status word already routes to the Ink placeholder screen; the dispatch must run before render()"}}
