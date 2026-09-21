@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Box, Text } from 'ink';
-import SelectInput from 'ink-select-input';
-import Spinner from 'ink-spinner';
+import { Box, Text } from "ink";
+import SelectInput from "ink-select-input";
+import Spinner from "ink-spinner";
+import type React from "react";
+import { useState } from "react";
 
 interface RecruitScreenProps {
   args: string[];
@@ -23,47 +24,47 @@ interface TechOption {
 
 const availableTech: TechOption[] = [
   {
-    label: '🏗️  Next.js 15',
-    value: 'nextjs-15',
-    category: 'Framework',
-    description: 'The Godfather - App Router, React 19, Server Components',
+    label: "🏗️  Next.js 15",
+    value: "nextjs-15",
+    category: "Framework",
+    description: "The Godfather - App Router, React 19, Server Components",
   },
   {
-    label: '🎨 shadcn/ui',
-    value: 'shadcn',
-    category: 'UI',
-    description: 'The Tailor - Beautiful components with Radix UI',
+    label: "🎨 shadcn/ui",
+    value: "shadcn",
+    category: "UI",
+    description: "The Tailor - Beautiful components with Radix UI",
   },
   {
-    label: '🎨 Tailwind CSS',
-    value: 'tailwindcss',
-    category: 'UI',
-    description: 'The Designer - Utility-first styling',
+    label: "🎨 Tailwind CSS",
+    value: "tailwindcss",
+    category: "UI",
+    description: "The Designer - Utility-first styling",
   },
   {
-    label: '💾 Drizzle ORM',
-    value: 'drizzle',
-    category: 'Database',
-    description: 'The Accountant - Type-safe database operations',
+    label: "💾 Drizzle ORM",
+    value: "drizzle",
+    category: "Database",
+    description: "The Accountant - Type-safe database operations",
   },
   {
-    label: '⚙️  Vercel AI SDK',
-    value: 'vercel-ai-sdk',
-    category: 'Tooling',
-    description: 'The Consultant - AI applications with function calling',
+    label: "⚙️  Vercel AI SDK",
+    value: "vercel-ai-sdk",
+    category: "Tooling",
+    description: "The Consultant - AI applications with function calling",
   },
   {
-    label: '🔌 Memory MCP Server',
-    value: 'memory-mcp-server',
-    category: 'MCP',
-    description: 'The Archivist - Memory persistence and vector search',
+    label: "🔌 Memory MCP Server",
+    value: "memory-mcp-server",
+    category: "MCP",
+    description: "The Archivist - Memory persistence and vector search",
   },
 ];
 
 export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExit }) => {
   const [selectedTech, setSelectedTech] = useState<string[]>([]);
   const [isRecruiting, setIsRecruiting] = useState(false);
-  const [phase, setPhase] = useState<'selecting' | 'confirming' | 'done'>('selecting');
+  const [phase, setPhase] = useState<"selecting" | "confirming" | "done">("selecting");
 
   const handleSelect = (item: { value: string }) => {
     setIsRecruiting(true);
@@ -71,7 +72,7 @@ export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExi
     setTimeout(() => {
       setSelectedTech([...selectedTech, item.value]);
       setIsRecruiting(false);
-      setPhase('done');
+      setPhase("done");
 
       setTimeout(() => {
         onExit();
@@ -79,7 +80,7 @@ export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExi
     }, 1500);
   };
 
-  if (phase === 'done') {
+  if (phase === "done") {
     return (
       <Box flexDirection="column" padding={1}>
         <Text color="green">
@@ -110,12 +111,8 @@ export const RecruitScreen: React.FC<RecruitScreenProps> = ({ args, flags, onExi
       </Box>
 
       <Box marginBottom={1}>
-        <Text dimColor>
-          "A friend should always underestimate your virtues
-        </Text>
-        <Text dimColor>
-           and an enemy overestimate your faults."
-        </Text>
+        <Text dimColor>"A friend should always underestimate your virtues</Text>
+        <Text dimColor>and an enemy overestimate your faults."</Text>
       </Box>
 
       <SelectInput items={availableTech} onSelect={handleSelect} />

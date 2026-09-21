@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import React from 'react';
-import { render } from 'ink';
-import meow from 'meow';
-import { App } from './ui/App.js';
+import { render } from "ink";
+import meow from "meow";
+import React from "react";
+import { App } from "./ui/App.js";
 
 const cli = meow(
   `
@@ -38,33 +38,33 @@ const cli = meow(
     importMeta: import.meta,
     flags: {
       gotommyguns: {
-        type: 'boolean',
+        type: "boolean",
         default: false,
-        shortFlag: 'g',
+        shortFlag: "g",
       },
       omerta: {
-        type: 'boolean',
+        type: "boolean",
         default: false,
-        shortFlag: 'o',
+        shortFlag: "o",
       },
       sitdown: {
-        type: 'boolean',
+        type: "boolean",
         default: false,
-        shortFlag: 's',
+        shortFlag: "s",
       },
       crew: {
-        type: 'string',
-        shortFlag: 'c',
+        type: "string",
+        shortFlag: "c",
       },
     },
-  }
+  },
 );
 
 // Render the TUI
 render(
   React.createElement(App, {
-    command: cli.input[0] || 'welcome',
+    command: cli.input[0] || "welcome",
     args: cli.input.slice(1),
     flags: cli.flags,
-  })
+  }),
 );
