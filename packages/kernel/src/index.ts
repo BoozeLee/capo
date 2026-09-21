@@ -19,3 +19,6 @@ export type { Hit, HitNode, Soldier } from "./hits/schema.js";
 export { validateHit } from "./hits/validate.js";
 export type { HitValidationError } from "./hits/validate.js";
 export { listHits, loadHit, saveHit } from "./hits/io.js";
+export { liveEvents, materialize } from "./board/materialize.js";
+export type { Board, HitState, NodeState, NodeStatus } from "./board/materialize.js";
+export { nextRunnable } from "./board/next.js";
