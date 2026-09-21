@@ -14,13 +14,21 @@
     "lint": "biome lint .",
     "format": "biome format --write ."
   },
-  "keywords": ["tui", "cli", "dev-stack", "configuration", "mafia-theme", "terminal-ui"],
+  "keywords": [
+    "tui",
+    "cli",
+    "dev-stack",
+    "configuration",
+    "mafia-theme",
+    "terminal-ui"
+  ],
   "author": "The Family",
   "license": "MIT",
   "type": "module",
   "dependencies": {
     "@capo/core": "workspace:*",
     "@capo/engine": "workspace:*",
+    "@capo/kernel": "workspace:*",
     "ink": "^5.0.1",
     "ink-big-text": "^2.0.0",
     "ink-gradient": "^3.0.0",
