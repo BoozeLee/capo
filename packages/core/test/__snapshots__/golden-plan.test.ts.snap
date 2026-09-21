@@ -1,0 +1,448 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`golden plan: the full 5-tech stack > matches the committed golden snapshot 1`] = `
+{
+  "coreVersion": "0.1.0",
+  "project": {
+    "name": "myapp",
+  },
+  "schemaVersion": 1,
+  "stack": {
+    "autoIncluded": [],
+    "framework": "nextjs",
+    "members": [
+      "nextjs",
+      "shadcn",
+      "drizzle",
+      "vercel-ai-sdk",
+      "memory-mcp-server",
+    ],
+    "options": {
+      "drizzleDriver": "libsql",
+      "shadcnPreset": "nova",
+    },
+  },
+  "steps": [
+    {
+      "args": [
+        "dlx",
+        "create-next-app@16",
+        "myapp",
+        "--ts",
+        "--tailwind",
+        "--eslint",
+        "--app",
+        "--src-dir",
+        "--import-alias",
+        "@/*",
+        "--use-pnpm",
+        "--yes",
+        "--disable-git",
+      ],
+      "cmd": "pnpm",
+      "cwd": "parent",
+      "id": "nextjs-create",
+      "kind": "run",
+      "label": "Scaffold Next.js app",
+      "tech": "nextjs",
+      "timeoutMs": 600000,
+    },
+    {
+      "args": [
+        "dlx",
+        "shadcn@latest",
+        "init",
+        "--yes",
+        "--preset",
+        "nova",
+        "--base",
+        "radix",
+        "--no-monorepo",
+        "--silent",
+      ],
+      "cmd": "pnpm",
+      "cwd": "project",
+      "id": "shadcn-init",
+      "kind": "run",
+      "label": "Initialize shadcn/ui",
+      "tech": "shadcn",
+      "timeoutMs": 120000,
+    },
+    {
+      "args": [
+        "dlx",
+        "shadcn@latest",
+        "add",
+        "button",
+        "card",
+        "input",
+        "--yes",
+        "--silent",
+      ],
+      "cmd": "pnpm",
+      "cwd": "project",
+      "id": "shadcn-add",
+      "kind": "run",
+      "label": "Add starter components",
+      "tech": "shadcn",
+      "timeoutMs": 120000,
+    },
+    {
+      "args": [
+        "add",
+        "drizzle-orm",
+        "@libsql/client",
+      ],
+      "cmd": "pnpm",
+      "cwd": "project",
+      "id": "drizzle-install",
+      "kind": "run",
+      "label": "Install Drizzle ORM + libSQL client",
+      "tech": "drizzle",
+      "timeoutMs": 120000,
+    },
+    {
+      "args": [
+        "add",
+        "-D",
+        "drizzle-kit",
+      ],
+      "cmd": "pnpm",
+      "cwd": "project",
+      "id": "drizzle-install-dev",
+      "kind": "run",
+      "label": "Install drizzle-kit",
+      "tech": "drizzle",
+      "timeoutMs": 120000,
+    },
+    {
+      "contents": "import { defineConfig } from "drizzle-kit";
+
+export default defineConfig({
+  dialect: "sqlite",
+  schema: "./src/db/schema.ts",
+  out: "./drizzle",
+  dbCredentials: {
+    url: process.env.DATABASE_URL ?? "file:local.db",
+  },
+});
+",
+      "id": "drizzle-config",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write drizzle.config.ts",
+      "path": "drizzle.config.ts",
+      "tech": "drizzle",
+    },
+    {
+      "contents": "import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+
+export const users = sqliteTable("users", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+  email: text("email").notNull().unique(),
+});
+",
+      "id": "drizzle-schema",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write db schema",
+      "path": "src/db/schema.ts",
+      "tech": "drizzle",
+    },
+    {
+      "contents": "import { createClient } from "@libsql/client";
+import { drizzle } from "drizzle-orm/libsql";
+import * as schema from "./schema.js";
+
+const client = createClient({ url: process.env.DATABASE_URL ?? "file:local.db" });
+
+export const db = drizzle(client, { schema });
+",
+      "id": "drizzle-client",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write db client",
+      "path": "src/db/index.ts",
+      "tech": "drizzle",
+    },
+    {
+      "id": "drizzle-scripts",
+      "kind": "patchJson",
+      "label": "Add drizzle-kit scripts",
+      "merge": {
+        "scripts": {
+          "db:generate": "drizzle-kit generate",
+          "db:migrate": "drizzle-kit migrate",
+          "db:studio": "drizzle-kit studio",
+        },
+      },
+      "path": "package.json",
+      "tech": "drizzle",
+    },
+    {
+      "contents": "
+# capo: drizzle
+*.db
+",
+      "createIfMissing": true,
+      "id": "drizzle-gitignore",
+      "kind": "appendFile",
+      "label": "Ignore local database file",
+      "path": ".gitignore",
+      "tech": "drizzle",
+    },
+    {
+      "args": [
+        "add",
+        "ai",
+        "@ai-sdk/react",
+        "@ai-sdk/openai-compatible",
+      ],
+      "cmd": "pnpm",
+      "cwd": "project",
+      "id": "ai-sdk-install",
+      "kind": "run",
+      "label": "Install Vercel AI SDK",
+      "tech": "vercel-ai-sdk",
+      "timeoutMs": 120000,
+    },
+    {
+      "contents": "import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
+
+const provider = createOpenAICompatible({
+  name: "local",
+  baseURL: process.env.AI_BASE_URL ?? "http://localhost:11434/v1",
+  apiKey: process.env.AI_API_KEY ?? "ollama",
+});
+
+export const model = provider(process.env.AI_MODEL ?? "llama3.2");
+",
+      "id": "ai-sdk-provider",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write AI provider (defaults to local Ollama)",
+      "path": "src/lib/ai.ts",
+      "tech": "vercel-ai-sdk",
+    },
+    {
+      "contents": "import {
+  convertToModelMessages,
+  createUIMessageStreamResponse,
+  streamText,
+  toUIMessageStream,
+  type UIMessage,
+} from "ai";
+import { model } from "@/lib/ai";
+
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const { messages }: { messages: UIMessage[] } = await req.json();
+
+  const result = streamText({
+    model,
+    instructions: "You are a helpful assistant.",
+    messages: await convertToModelMessages(messages),
+  });
+
+  return createUIMessageStreamResponse({
+    stream: toUIMessageStream({ stream: result.stream }),
+  });
+}
+",
+      "id": "ai-sdk-route",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write chat API route",
+      "path": "src/app/api/chat/route.ts",
+      "tech": "vercel-ai-sdk",
+    },
+    {
+      "contents": ""use client";
+
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { useState } from "react";
+
+export default function ChatPage() {
+  const { messages, sendMessage, status } = useChat({
+    transport: new DefaultChatTransport({ api: "/api/chat" }),
+  });
+  const [input, setInput] = useState("");
+
+  return (
+    <>
+      {messages.map((message) => (
+        <div key={message.id}>
+          {message.role === "user" ? "User: " : "AI: "}
+          {message.parts.map((part, index) =>
+            part.type === "text" ? <span key={index}>{part.text}</span> : null,
+          )}
+        </div>
+      ))}
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (input.trim()) {
+            sendMessage({ text: input });
+            setInput("");
+          }
+        }}
+      >
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          disabled={status !== "ready"}
+          placeholder="Say something..."
+        />
+        <button type="submit" disabled={status !== "ready"}>
+          Submit
+        </button>
+      </form>
+    </>
+  );
+}
+",
+      "id": "ai-sdk-page",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write chat page",
+      "path": "src/app/chat/page.tsx",
+      "tech": "vercel-ai-sdk",
+    },
+    {
+      "contents": "# capo: vercel-ai-sdk
+# Defaults to a local Ollama server. Set these to point at any
+# OpenAI-compatible endpoint instead.
+AI_BASE_URL=http://localhost:11434/v1
+AI_MODEL=llama3.2
+AI_API_KEY=ollama
+",
+      "id": "ai-sdk-env-example",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write .env.example",
+      "path": ".env.example",
+      "tech": "vercel-ai-sdk",
+    },
+    {
+      "contents": "{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": ".capo/memory.jsonl"
+      }
+    }
+  }
+}
+",
+      "id": "memory-mcp-config",
+      "ifExists": "fail",
+      "kind": "writeFile",
+      "label": "Write .mcp.json",
+      "path": ".mcp.json",
+      "tech": "memory-mcp-server",
+    },
+    {
+      "contents": "
+# capo: memory-mcp-server
+.capo/memory.jsonl
+",
+      "createIfMissing": true,
+      "id": "memory-mcp-gitignore",
+      "kind": "appendFile",
+      "label": "Ignore memory file",
+      "path": ".gitignore",
+      "tech": "memory-mcp-server",
+    },
+    {
+      "contents": "version: 1
+name: myapp
+createdAt: 2026-09-21T00:00:00.000Z
+capo:
+  version: 0.1.0
+  coreVersion: 0.1.0
+stack:
+  framework: nextjs
+  members:
+    - nextjs
+    - shadcn
+    - drizzle
+    - vercel-ai-sdk
+    - memory-mcp-server
+  options:
+    drizzleDriver: libsql
+    shadcnPreset: nova
+owned:
+  shadcn:
+    - components.json
+    - src/components/ui
+    - src/lib/utils.ts
+  drizzle:
+    - drizzle.config.ts
+    - src/db/schema.ts
+    - src/db/index.ts
+  vercel-ai-sdk:
+    - src/lib/ai.ts
+    - src/app/api/chat/route.ts
+    - src/app/chat/page.tsx
+    - .env.example
+  memory-mcp-server:
+    - .mcp.json
+",
+      "id": "capo-manifest",
+      "ifExists": "overwrite",
+      "kind": "writeFile",
+      "label": "Write capo.yaml",
+      "path": "capo.yaml",
+      "tech": "capo",
+    },
+    {
+      "args": [
+        "init",
+      ],
+      "cmd": "git",
+      "cwd": "project",
+      "id": "capo-git-init",
+      "kind": "run",
+      "label": "git init",
+      "tech": "capo",
+      "timeoutMs": 30000,
+    },
+    {
+      "args": [
+        "add",
+        "-A",
+      ],
+      "cmd": "git",
+      "cwd": "project",
+      "id": "capo-git-add",
+      "kind": "run",
+      "label": "git add",
+      "tech": "capo",
+      "timeoutMs": 30000,
+    },
+    {
+      "args": [
+        "commit",
+        "-m",
+        "capo: la famiglia",
+      ],
+      "cmd": "git",
+      "cwd": "project",
+      "id": "capo-git-commit",
+      "kind": "run",
+      "label": "git commit",
+      "tech": "capo",
+      "timeoutMs": 30000,
+    },
+  ],
+}
+`;
