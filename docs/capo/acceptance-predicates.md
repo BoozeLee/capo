@@ -48,3 +48,13 @@ Ten of ten were writable; eight pass. The two that could not be commands are UI 
 exactly the leak the blueprint predicts. The two surprises (#4, #10) are the contract model
 doing its job on past work: it found an untested module and a license contradiction that
 review by eye had let through.
+
+## Replay data points
+
+- 2026-09-21 session `02d9af87` (this branch's build session): turns 45, transcript 9,127,329
+  context tokens (mean 202,830 / peak 276,652), ledger render/turn 168 [est. chars/4],
+  ratio 0.0008. **Not a go signal.** The node had zero events and the render carries no system
+  prompt, tool output, or file slices — everything the transcript is made of. The number is the
+  floor of the contract-rendered core; the real experiment is a hit worked end-to-end under
+  `/hit` with `edit` events and file slices in the render, compared turn-for-turn. Re-run
+  after `status-command` closes.
