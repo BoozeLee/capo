@@ -6,3 +6,6 @@
 {"seq":6,"ts":"2026-09-21T21:23:44.738Z","actor":"capo","kind":"node_start","hit":"status-command","node":"h2","parent":5,"payload":{"head":"08dbcd9cc43d55ff446b2e8b688f9465dd1f0a25"}}
 {"seq":7,"ts":"2026-09-21T21:23:55.622Z","actor":"capo","kind":"accept_run","hit":"status-command","node":"h2","parent":6,"payload":{"cmd":"pnpm --filter capo run build && node packages/cli/dist/cli.js status --json | node -e 'JSON.parse(require(\"fs\").readFileSync(0,\"utf8\"))'","exit":0,"durationMs":1801,"timedOut":false}}
 {"seq":8,"ts":"2026-09-21T21:23:55.633Z","actor":"capo","kind":"node_done","hit":"status-command","node":"h2","parent":7,"payload":{"accept_exit":0,"files":["packages/cli/src/cli.ts"]}}
+{"seq":9,"ts":"2026-09-21T21:25:34.602Z","actor":"capo","kind":"node_start","hit":"status-command","node":"h3","parent":8,"payload":{"head":"828c430e77d0038c910ac0088cce826a4517a2eb"}}
+{"seq":10,"ts":"2026-09-21T21:25:51.826Z","actor":"capo","kind":"accept_run","hit":"status-command","node":"h3","parent":9,"payload":{"cmd":"grep -q 'capo status' README.md && ! grep -q 'capo status <tech>. - Check individual tech status' DEVELOPMENT.md","exit":0,"durationMs":9,"timedOut":false}}
+{"seq":11,"ts":"2026-09-21T21:25:51.841Z","actor":"capo","kind":"node_done","hit":"status-command","node":"h3","parent":10,"payload":{"accept_exit":0,"files":["DEVELOPMENT.md","README.md"]}}
