@@ -17,10 +17,13 @@ export interface AcceptResult {
 export function runAccept(cmd: string, opts: AcceptOptions): Promise<AcceptResult> {
   const startedAt = Date.now();
   return new Promise((resolve) => {
+    // detached: the predicate gets its own process group, so a timeout kills the whole
+    // tree — with dash as `sh`, killing only the shell leaves its children holding our pipes.
     const child = spawn("sh", ["-c", cmd], {
       cwd: opts.cwd,
       env: { ...process.env, CI: "1", FORCE_COLOR: "0" },
       stdio: ["ignore", "pipe", "pipe"],
+      detached: true,
     });
     let stdout = "";
     let stderr = "";
@@ -36,7 +39,8 @@ export function runAccept(cmd: string, opts: AcceptOptions): Promise<AcceptResul
         ? null
         : setTimeout(() => {
             timedOut = true;
-            child.kill("SIGKILL");
+            if (child.pid !== undefined) process.kill(-child.pid, "SIGKILL");
+            else child.kill("SIGKILL");
           }, opts.timeoutMs);
     child.on("close", (code) => {
       if (timer) clearTimeout(timer);
