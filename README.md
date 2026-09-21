@@ -223,3 +223,10 @@ MIT - Perché anche le famiglie criminali rispettano la proprietà intellettuale
 *E adesso, basta con le stronzate. Andiamo a lavorare!*
 
 *Capisce? Tachinì, tutti quanti. La famiglia sopra tutto.*
+
+## 🎩 The Family (Capo for Claude Code)
+
+Same name, second product: a plan-first, contract-bound, ledger-backed way to run coding
+sessions. Skills: `/sitdown`, `/hit`, `/loyalty-check`, `/books`. State lives in `.capo/`
+(hit-list YAML, `books.md` rulings, `ledger.jsonl`). Install: `plugin/install.sh`.
+Design: `docs/capo/blueprint-v0.1.md`. Decision record: `docs/adr/0006`.
