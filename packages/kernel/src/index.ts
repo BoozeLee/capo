@@ -34,3 +34,11 @@ export { checkScope } from "./scope/check.js";
 export type { ScopeReport } from "./scope/check.js";
 export { runAccept } from "./accept/run.js";
 export type { AcceptOptions, AcceptResult } from "./accept/run.js";
+export { estimateTokens, renderContext } from "./context/render.js";
+export type { RenderInput, RenderedContext } from "./context/render.js";
+export {
+  compareToLedger,
+  parseSessionTurns,
+  summarizeSession,
+} from "./replay/claude-session.js";
+export type { LedgerComparison, SessionSummary, SessionTurn } from "./replay/claude-session.js";
