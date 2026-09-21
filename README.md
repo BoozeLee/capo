@@ -137,8 +137,10 @@ capo compose nextjs shadcn drizzle --sitdown
 # Guarda chi è nella famiglia
 capo famiglia
 
-# Controlla lo status di qualcuno
+# Controlla chi è davvero installato (legge capo.yaml + package.json)
+capo status
 capo status nextjs
+capo status --json
 
 # Fai sparire qualcuno
 capo whack tailwind

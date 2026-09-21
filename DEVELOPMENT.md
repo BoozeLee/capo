@@ -38,6 +38,8 @@ capo/
 4. **Famiglia Command** - Family structure visualization
 5. **Multiple Modes** - Flags for `--gotommyguns`, `--omerta`, `--sitdown`
 6. **Mafia Narrative** - All messages follow the family theme
+7. **Status Command** - `capo status [tech] [--json]` compares `package.json` against the
+   stack recorded in `capo.yaml`; exit 2 with a typed error outside a capo project
 
 ### 🚧 In Progress
 - Actual config composition logic (currently simulated)
@@ -68,7 +70,6 @@ capo/
    - Create backup system
 
 5. **Additional Commands**
-   - `capo status <tech>` - Check individual tech status
    - `capo whack <tech>` - Remove tech from stack
    - `capo famiglia --tree` - Visual dependency graph
    - `capo made` - Quick start with common stacks
