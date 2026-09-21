@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Text, useApp } from 'ink';
-import { WelcomeScreen } from './screens/WelcomeScreen.js';
-import { RecruitScreen } from './screens/RecruitScreen.js';
-import { ComposeScreen } from './screens/ComposeScreen.js';
-import { FamigliaScreen } from './screens/FamigliaScreen.js';
+import { Box, Text, useApp } from "ink";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { ComposeScreen } from "./screens/ComposeScreen.js";
+import { FamigliaScreen } from "./screens/FamigliaScreen.js";
+import { RecruitScreen } from "./screens/RecruitScreen.js";
+import { WelcomeScreen } from "./screens/WelcomeScreen.js";
 
 interface AppProps {
   command: string;
@@ -26,30 +27,30 @@ export const App: React.FC<AppProps> = ({ command, args, flags }) => {
 
   // Handle different commands
   switch (currentScreen) {
-    case 'welcome':
+    case "welcome":
       return <WelcomeScreen onExit={exit} />;
 
-    case 'recruit':
+    case "recruit":
       return <RecruitScreen args={args} flags={flags} onExit={exit} />;
 
-    case 'compose':
+    case "compose":
       return <ComposeScreen args={args} flags={flags} onExit={exit} />;
 
-    case 'famiglia':
+    case "famiglia":
       return <FamigliaScreen onExit={exit} />;
 
-    case 'status':
+    case "status":
       return (
         <Box flexDirection="column" padding={1}>
-          <Text color="yellow">🔍 Checking status of {args[0] || 'unknown'}...</Text>
+          <Text color="yellow">🔍 Checking status of {args[0] || "unknown"}...</Text>
           <Text dimColor>Feature coming soon...</Text>
         </Box>
       );
 
-    case 'whack':
+    case "whack":
       return (
         <Box flexDirection="column" padding={1}>
-          <Text color="red">💥 Taking care of {args[0] || 'business'}...</Text>
+          <Text color="red">💥 Taking care of {args[0] || "business"}...</Text>
           <Text dimColor>Feature coming soon...</Text>
         </Box>
       );
