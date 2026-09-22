@@ -20,3 +20,11 @@
 - evidence: docs/adr/0004-forge-sends-selection-not-plan.md
 - overturn-if: dispatch moves to repository_dispatch with an artifact upload
 - date: 2026-09-21
+
+## Keep ledger-as-context (D1 GO)
+- binds: packages/kernel/src/context/**, packages/kernel/src/replay/**, packages/cli/src/commands/family/replay.ts, docs/capo/**
+- because: Capo called DECISION: GO D1 after fixture discrimination and a real /hit session (277ad75d); cutting D1 would re-litigate a closed call
+- evidence: docs/capo/acceptance-predicates.md (DECISION: GO D1); ledger seq 26; commits eb421fe, 852f517, aa01574
+- overturn-if: a real /hit session with edit events recorded and per-node windowing still shows state-bearing ratio > 0.80 on completed nodes
+- date: 2026-09-22
+

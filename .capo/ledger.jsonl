@@ -24,3 +24,4 @@
 {"seq":24,"ts":"2026-09-22T15:47:19.958Z","actor":"capo","kind":"node_start","hit":"replay-go-nogo","node":"h4","parent":23,"payload":{"head":"9307a7ccd49c3986114963fac505e779525edd4a"}}
 {"seq":25,"ts":"2026-09-22T15:48:08.113Z","actor":"capo","kind":"accept_run","hit":"replay-go-nogo","node":"h4","parent":24,"payload":{"cmd":"grep -E '^DECISION: (GO|NO-GO|DEFER) D1' docs/capo/acceptance-predicates.md","exit":0,"durationMs":7,"timedOut":false}}
 {"seq":26,"ts":"2026-09-22T15:48:08.125Z","actor":"capo","kind":"node_done","hit":"replay-go-nogo","node":"h4","parent":25,"payload":{"accept_exit":0,"files":["docs/capo/acceptance-predicates.md"]}}
+{"seq":27,"ts":"2026-09-22T15:49:48.488Z","actor":"capo","kind":"ruling_added","parent":26,"payload":{"title":"Keep ledger-as-context (D1 GO)"}}
