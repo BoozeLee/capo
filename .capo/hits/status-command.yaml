@@ -1,0 +1,31 @@
+id: status-command
+title: "capo status <tech>: compare installed package.json against the catalog"
+created: "2026-09-21"
+nodes:
+  - id: h1
+    goal: "runStatusCommand(opts) returns TechStatus rows for the cwd's package.json and exits 0"
+    depends_on: []
+    write_scope: ["packages/cli/src/commands/status.ts", "packages/cli/test/status-command.test.ts"]
+    forbidden: ["packages/core/**", "pnpm-lock.yaml"]
+    accept: "pnpm --filter capo exec vitest run test/status-command.test.ts"
+    budget: 25
+    rollback: "git checkout -- packages/cli/src/commands/status.ts packages/cli/test/status-command.test.ts"
+    soldier: test
+  - id: h2
+    goal: "cli.ts dispatches `status [tech]` to runStatusCommand before render(), with --json support"
+    depends_on: [h1]
+    write_scope: ["packages/cli/src/cli.ts"]
+    forbidden: ["packages/cli/src/ui/**", "packages/core/**"]
+    accept: "pnpm --filter capo run build && node packages/cli/dist/cli.js status --json | node -e 'JSON.parse(require(\"fs\").readFileSync(0,\"utf8\"))'"
+    budget: 15
+    rollback: "git checkout -- packages/cli/src/cli.ts"
+    soldier: refactor
+  - id: h3
+    goal: "README and DEVELOPMENT.md document `capo status` as implemented, not 'to be implemented'"
+    depends_on: [h2]
+    write_scope: ["README.md", "DEVELOPMENT.md"]
+    forbidden: ["packages/**"]
+    accept: "grep -q 'capo status' README.md && ! grep -q 'capo status <tech>. - Check individual tech status' DEVELOPMENT.md"
+    budget: 8
+    rollback: "git checkout -- README.md DEVELOPMENT.md"
+    soldier: docs

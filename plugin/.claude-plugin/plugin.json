@@ -1,0 +1,7 @@
+{
+  "name": "capo",
+  "version": "0.1.0",
+  "description": "Capo family rules for Claude Code: plan-first sit-downs, contract-bound hits, adversarial loyalty checks, and durable rulings in the Books.",
+  "author": { "name": "Bakerstreet Labs" },
+  "keywords": ["agent", "planning", "memory", "tui", "capo"]
+}
