@@ -56,7 +56,7 @@ describe("capo replay (state-bearing)", () => {
   test("uses state-bearing denominator and prints it on the result", async () => {
     const r = await repo();
     const session = path.join(r.cwd, "s.jsonl");
-    const fileBody = "export const x = 1;\n" + "x".repeat(2000);
+    const fileBody = `export const x = 1;\n${"x".repeat(2000)}`;
     const usage = {
       input_tokens: 2000,
       cache_read_input_tokens: 180_000,
