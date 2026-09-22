@@ -37,8 +37,17 @@ export type { AcceptOptions, AcceptResult } from "./accept/run.js";
 export { estimateTokens, renderContext } from "./context/render.js";
 export type { RenderInput, RenderedContext } from "./context/render.js";
 export {
+  compareStateBearingToLedger,
   compareToLedger,
   parseSessionTurns,
   summarizeSession,
+  summarizeStateBearing,
+  tokensFromChars,
 } from "./replay/claude-session.js";
-export type { LedgerComparison, SessionSummary, SessionTurn } from "./replay/claude-session.js";
+export type {
+  LedgerComparison,
+  SessionSummary,
+  SessionTurn,
+  StateBearingComparison,
+  StateBearingSummary,
+} from "./replay/claude-session.js";
