@@ -58,3 +58,43 @@ review by eye had let through.
   floor of the contract-rendered core; the real experiment is a hit worked end-to-end under
   `/hit` with `edit` events and file slices in the render, compared turn-for-turn. Re-run
   after `status-command` closes.
+
+## Week-2 replay re-run (2026-09-21, after state-bearing denominator)
+
+The first datapoint on this branch (session `02d9af87`, empty node, ratio ≈ 0.0008 against
+full-context tokens) was **not a go signal** — the numerator was a contract-only floor and the
+denominator included system prompt + cache.
+
+After `replay-go-nogo` h1–h2:
+
+| Fixture | ledger render/turn | state-bearing tokens | ratio | notes |
+|---|---|---|---|---|
+| Empty node (contract only, ~168 tok) × 2 turns | 168 | ~2010 (two ~4kB tool_result file reads) | ~0.17 | near floor |
+| Edited node (both file slices in render) × 2 turns | ~2015 | ~2010 | ~2.0 | clearly above empty |
+| Same fixtures via legacy full-context compare | 168 / ~2015 | (context ~404k) | ~0.001 / ~0.01 | both collapse to ~0 — the false go |
+
+The metric now separates empty from edited. It does **not** yet answer D1 on a real
+`/hit`-worked session with recorded `edit` events, which is the Capo's call in h4.
+
+INCONCLUSIVE: D1 (ledger-as-context) — metric is honest enough to decide; awaiting a real worked-hit replay and Capo judgment.
+
+### Real worked-hit replay (2026-09-22, session `277ad75d`, `status-command` h1–h3 worked under `/hit`)
+
+54 assistant turns; full-context 4,584,815 tokens (mean 84,904); state-bearing 20,779 tokens
+(83,116 chars across 48 tool_results).
+
+| Node | ledger render/turn | ledger tokens (×54) | ratio |
+|---|---|---|---|
+| h1 | 340 | 18,700 | 0.87 |
+| h2 | 281 | 15,174 | 0.73 |
+| h3 | 260 | 14,300 | 0.66 |
+
+Reading: the render is scaled by every turn in the session, so each row asks "what if the whole
+session had been rendered from this node" — a session-level bound, not a per-node cost. None of
+the three renders carried a file slice because the `/hit` ritual records `files` on `node_done`
+but never emits an `edit` event; the render is contract + rulings + events only. Numbers sit in
+the 0.60–0.80 band: not a go, not a cut.
+
+INCONCLUSIVE: D1 — real-session ratios 0.66–0.87. Before calling it, `/hit` must emit `edit`
+events so the render carries what a soldier actually reads, and the denominator must be
+windowed to the node's own turns rather than the whole session.

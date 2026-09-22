@@ -118,7 +118,7 @@ describe("capo family commands", () => {
     expect(r.last()).toMatchObject([{ overrides: 3 }]);
   });
 
-  test("replay reports transcript vs ledger tokens", async () => {
+  test("replay reports state-bearing vs ledger tokens", async () => {
     const r = await repo();
     const session = path.join(r.cwd, "s.jsonl");
     const usage = {
@@ -132,8 +132,12 @@ describe("capo family commands", () => {
       `${JSON.stringify({ type: "assistant", timestamp: "t", message: { id: "m1", usage } })}\n`,
     );
     expect(await r.run(`replay ${session} demo h1`, { budget: 4000 })).toBe(0);
-    expect(r.last()).toMatchObject({ transcriptTokens: 5010, turns: 1 });
-    expect(r.last().ratio).toBeLessThan(1);
+    expect(r.last()).toMatchObject({
+      turns: 1,
+      stateBearingTokens: 0,
+      ratio: 0,
+      denominator: "state-bearing-tool-results",
+    });
   });
 
   test("unknown subcommand is exit 2 with a usage line", async () => {
