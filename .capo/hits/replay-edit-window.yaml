@@ -1,0 +1,61 @@
+id: replay-edit-window
+title: "Edit events + per-node windowing so D1 ratios measure what a soldier reads"
+created: "2026-09-22"
+nodes:
+  - id: h1
+    goal: "hit done emits one edit event per changed in-scope file with path + body (or diff) before node_done, so renderContext can surface file slices"
+    depends_on: []
+    write_scope:
+      - "packages/cli/src/commands/family/hit.ts"
+      - "packages/cli/test/**"
+    forbidden:
+      - "packages/kernel/**"
+      - "packages/core/**"
+      - "pnpm-lock.yaml"
+    accept: "pnpm --filter capo exec vitest run test/family/hit"
+    budget: 30
+    rollback: "git checkout -- packages/cli/src/commands/family/hit.ts packages/cli/test"
+    soldier: test
+
+  - id: h2
+    goal: "summarizeStateBearing and parseSessionTurns accept an optional time window; compareStateBearingToLedger uses the windowed turn count so ratios are per-node not session-wide"
+    depends_on: []
+    write_scope:
+      - "packages/kernel/src/replay/**"
+      - "packages/kernel/test/replay/**"
+      - "packages/kernel/src/index.ts"
+    forbidden:
+      - "packages/cli/**"
+      - "packages/core/**"
+      - "pnpm-lock.yaml"
+    accept: "pnpm --filter @capo/kernel exec vitest run test/replay"
+    budget: 30
+    rollback: "git checkout -- packages/kernel/src/replay packages/kernel/test/replay packages/kernel/src/index.ts"
+    soldier: test
+
+  - id: h3
+    goal: "capo replay windows the session to the node's node_start..node_done (or --from/--to) and prints the window; accept proves a windowed ratio differs from session-wide on a fixture"
+    depends_on: [h1, h2]
+    write_scope:
+      - "packages/cli/src/commands/family/replay.ts"
+      - "packages/cli/test/**"
+    forbidden:
+      - "packages/kernel/**"
+      - "packages/core/**"
+      - "pnpm-lock.yaml"
+    accept: "pnpm --filter capo exec vitest run test/family/replay"
+    budget: 25
+    rollback: "git checkout -- packages/cli/src/commands/family/replay.ts packages/cli/test"
+    soldier: test
+
+  - id: h4
+    goal: "docs/capo/acceptance-predicates.md notes edit+window follow-ups as the next measure before Rust, with a placeholder for the re-run sha"
+    depends_on: [h3]
+    write_scope:
+      - "docs/capo/acceptance-predicates.md"
+    forbidden:
+      - "packages/**"
+    accept: "grep -q 'edit events' docs/capo/acceptance-predicates.md && grep -q 'per-node window' docs/capo/acceptance-predicates.md"
+    budget: 8
+    rollback: "git checkout -- docs/capo/acceptance-predicates.md"
+    soldier: docs
