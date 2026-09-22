@@ -1,0 +1,68 @@
+id: replay-go-nogo
+title: "Honest week-2 replay metric: go/no-go on the ledger thesis"
+created: "2026-09-21"
+nodes:
+  - id: h1
+    goal: "renderContext includes edit-event file slices (path + body/diff) so a worked node does not render as an empty floor"
+    depends_on: []
+    write_scope:
+      - "packages/kernel/src/context/**"
+      - "packages/kernel/test/context/**"
+      - "packages/kernel/src/ledger/**"
+    forbidden:
+      - "packages/cli/**"
+      - "packages/core/**"
+      - "packages/engine/**"
+      - "pnpm-lock.yaml"
+    accept: "pnpm --filter @capo/kernel exec vitest run test/context"
+    budget: 30
+    rollback: "git checkout -- packages/kernel/src/context packages/kernel/test/context packages/kernel/src/ledger"
+    soldier: test
+
+  - id: h2
+    goal: "compareToLedger (or successor) compares ledger render tokens to state-bearing transcript tokens (tool/file content), not full context including system prompt; empty-node ratio stays near floor, edited-node fixture is clearly above it"
+    depends_on: [h1]
+    write_scope:
+      - "packages/kernel/src/replay/**"
+      - "packages/kernel/test/replay/**"
+    forbidden:
+      - "packages/cli/**"
+      - "packages/core/**"
+      - "pnpm-lock.yaml"
+    accept: "pnpm --filter @capo/kernel exec vitest run test/replay"
+    budget: 35
+    rollback: "git checkout -- packages/kernel/src/replay packages/kernel/test/replay"
+    soldier: test
+
+  - id: h3
+    goal: "capo replay CLI uses the new metric and prints the denominator definition; docs/capo/acceptance-predicates.md records a re-run with an explicit GO, NO-GO, or INCONCLUSIVE line"
+    depends_on: [h2]
+    write_scope:
+      - "packages/cli/src/commands/family/replay.ts"
+      - "packages/cli/test/**"
+      - "docs/capo/acceptance-predicates.md"
+      - "packages/kernel/src/index.ts"  # Capo-approved deviation #21
+    forbidden:
+      - "packages/kernel/src/context/**"
+      - "packages/kernel/src/replay/**"
+      - "packages/kernel/src/ledger/**"
+      - "packages/core/**"
+      - "pnpm-lock.yaml"
+    accept: "pnpm --filter capo exec vitest run test/family/replay && grep -E '^(GO|NO-GO|INCONCLUSIVE):' docs/capo/acceptance-predicates.md"
+    budget: 25
+    rollback: "git checkout -- packages/cli/src/commands/family/replay.ts packages/cli/test docs/capo/acceptance-predicates.md"
+    soldier: docs
+
+  - id: h4
+    goal: "Capo reads the re-run numbers and calls the week-2 go/no-go on D1 (ledger-as-context)"
+    depends_on: [h3]
+    write_scope:
+      - "docs/capo/acceptance-predicates.md"
+    forbidden:
+      - "packages/**"
+    accept: "grep -E '^DECISION: (GO|NO-GO|DEFER) D1' docs/capo/acceptance-predicates.md"
+    human_verify: true
+    human_verify_reason: "Only the Capo can decide whether the measured ratio justifies keeping the ledger thesis or cutting D1 before Rust."
+    budget: 5
+    rollback: "git checkout -- docs/capo/acceptance-predicates.md"
+    soldier: docs
