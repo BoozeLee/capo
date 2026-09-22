@@ -98,3 +98,16 @@ the 0.60–0.80 band: not a go, not a cut.
 INCONCLUSIVE: D1 — real-session ratios 0.66–0.87. Before calling it, `/hit` must emit `edit`
 events so the render carries what a soldier actually reads, and the denominator must be
 windowed to the node's own turns rather than the whole session.
+
+## Capo decision (h4)
+
+Capo reviewed the fixture discrimination (~0.17 empty vs ~2.0 edited), the real
+`/hit` session `277ad75d` ratios (0.66–0.87), and the known gaps (`edit` events not
+yet recorded; session-wide scaling). Call:
+
+DECISION: GO D1
+
+Ledger-as-context thesis holds. Follow-ups before Rust: `/hit` must emit `edit`
+events so renders carry file slices, and the denominator should be windowed to the
+node's own turns.
+
