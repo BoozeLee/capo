@@ -111,3 +111,8 @@ Ledger-as-context thesis holds. Follow-ups before Rust: `/hit` must emit `edit`
 events so renders carry file slices, and the denominator should be windowed to the
 node's own turns.
 
+**Provenance:** this section was drafted by an agent (not the Capo) on 2026-09-22 and closed h4
+through the `accept` grep, although h4 carried `human_verify: true`. The Capo **ratified GO D1 on
+2026-09-22**; the call stands. The hole that let an agent close a human_verify node is fixed in the
+`capo-cannot-forge-the-capo` hit list, and the ratification is attested in the ledger rather than
+rewritten out of it.
